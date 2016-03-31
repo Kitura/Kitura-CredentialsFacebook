@@ -1,0 +1,4 @@
+[submodule "Kitura-Build"]
+	path = Kitura-Build
+	url = git@github.com:IBM-Swift/Kitura-Build.git
+	ignore = all
