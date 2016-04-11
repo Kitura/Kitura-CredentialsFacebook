@@ -44,8 +44,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
     public var usersCache : NSCache?
     
     /// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
-    public func authenticate (request: RouterRequest, options: [String:AnyObject], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void) {
-        
+    public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:AnyObject], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void, inProgress: () -> Void) {
         if let code = request.queryParams["code"] {
             var requestOptions = [ClientRequestOptions]()
             requestOptions.append(.Schema("https://"))
@@ -63,8 +62,6 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                         try fbResponse.readAllData(body)
                         var jsonBody = JSON(data: body)
                         if let token = jsonBody["access_token"].string {
-                            print("got token ", token)
-                            
                             requestOptions = [ClientRequestOptions]()
                             requestOptions.append(.Schema("https://"))
                             requestOptions.append(.Hostname("graph.facebook.com"))
@@ -82,12 +79,10 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                                         jsonBody = JSON(data: body)
                                         if let id = jsonBody["id"].string,
                                             let name = jsonBody["name"].string {
-                                            let userProfile = UserProfile(id: id, name: name)
+                                            let userProfile = UserProfile(id: id, displayName: name, provider: self.name)
                                             let newCacheElement = BaseCacheElement(profile: userProfile)
                                             self.usersCache!.setObject(newCacheElement, forKey: token.bridge())
                                             onSuccess(userProfile)
-                                            print("ID ", id)
-                                            print("name ", name)
                                             return
                                         }
                                     }
@@ -113,7 +108,14 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
             requestForToken.end()
         }
         else {
-            onFailure()
+            // Log in
+            do {
+                try response.redirect("https://www.facebook.com/dialog/oauth?client_id=\(clientId)&redirect_uri=\(callbackUrl)&response_type=code")
+                inProgress()
+            }
+            catch {
+                Log.error("Failed to redirect to Facebook login page")
+            }
         }
     }
 }
