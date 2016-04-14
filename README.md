@@ -27,7 +27,7 @@ import CredentialsFacebook
 
 let credentials = Credentials()
 let fbCredentials = CredentialsFacebook(clientId: fbClientId, clientSecret: fbClientSecret, callbackUrl: serverUrl + "/login/facebook/callback")
-credentials.registerWithName(fbCredentials.name, plugin: fbCredentials)
+credentials.register(fbCredentials)
 ```
 Specify where to redirect non-authenticated requests:
 ```swift
