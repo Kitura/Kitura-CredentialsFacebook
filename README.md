@@ -29,6 +29,11 @@ let credentials = Credentials()
 let fbCredentials = CredentialsFacebook(clientId: fbClientId, clientSecret: fbClientSecret, callbackUrl: serverUrl + "/login/facebook/callback")
 credentials.register(fbCredentials)
 ```
+**Where:**
+   - *fbClientId* is the App ID of your app in the Facebook Developer dashboard
+   - *fbClientSecret* is the App Secret of your app in the Facebook Developer dashboard
+
+**Note:** The *callbackUrl* parameter above is used to tell the Facebook web login page where the user's browser should be redirected when the login is successful. It should be a URL handled by the server you are writing.
 Specify where to redirect non-authenticated requests:
 ```swift
 credentials.options["failureRedirect"] = "/login/facebook"
@@ -44,7 +49,7 @@ router.get("/private/data", handler:
         next()
 })
 ```
-And call `authenticate` to login with Facebook and to handle Facebook callback:
+And call `authenticate` to login with Facebook and to handle the redirect (callback) from the Facebook login web page after a successful login:
 
 ```swift
 router.get("/login/facebook",
