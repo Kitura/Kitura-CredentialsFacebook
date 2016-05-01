@@ -48,7 +48,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
     public var usersCache : NSCache?
     
     /// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
-    public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:AnyObject], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void, inProgress: () -> Void) {
+    public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void, inProgress: () -> Void) {
         if let code = request.queryParams["code"] {
             var requestOptions = [ClientRequestOptions]()
             requestOptions.append(.Schema("https://"))
