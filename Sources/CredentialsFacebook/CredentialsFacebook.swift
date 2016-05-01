@@ -45,7 +45,12 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
         self.callbackUrl = callbackUrl
     }
     
+#if os(OSX)
+    public var usersCache : NSCache<NSString, BaseCacheElement>?
+#else
     public var usersCache : NSCache?
+#endif
+    
     
     /// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
     public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void, inProgress: () -> Void) {
@@ -63,7 +68,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                 if let fbResponse = fbResponse where fbResponse.statusCode == HttpStatusCode.OK {
                     do {
                         var body = NSMutableData()
-                        try fbResponse.readAllData(body)
+                        try fbResponse.readAllData(into: body)
                         var jsonBody = JSON(data: body)
                         if let token = jsonBody["access_token"].string {
                             requestOptions = [ClientRequestOptions]()
@@ -79,13 +84,11 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                                 if let profileResponse = profileResponse where profileResponse.statusCode == HttpStatusCode.OK {
                                     do {
                                         body = NSMutableData()
-                                        try profileResponse.readAllData(body)
+                                        try profileResponse.readAllData(into: body)
                                         jsonBody = JSON(data: body)
                                         if let id = jsonBody["id"].string,
                                             let name = jsonBody["name"].string {
                                             let userProfile = UserProfile(id: id, displayName: name, provider: self.name)
-                                            let newCacheElement = BaseCacheElement(profile: userProfile)
-                                            self.usersCache!.setObject(newCacheElement, forKey: token.bridge())
                                             onSuccess(userProfile)
                                             return
                                         }
