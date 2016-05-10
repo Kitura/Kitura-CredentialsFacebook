@@ -36,7 +36,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
     }
     
     public var type : CredentialsPluginType {
-        return .Session
+        return .session
     }
     
     public init (clientId: String, clientSecret : String, callbackUrl : String) {
@@ -56,32 +56,32 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
     public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void, inProgress: () -> Void) {
         if let code = request.queryParams["code"] {
             var requestOptions = [ClientRequestOptions]()
-            requestOptions.append(.Schema("https://"))
-            requestOptions.append(.Hostname("graph.facebook.com"))
-            requestOptions.append(.Method("GET"))
-            requestOptions.append(.Path("/v2.3/oauth/access_token?client_id=\(clientId)&redirect_uri=\(callbackUrl)&client_secret=\(clientSecret)&code=\(code)"))
+            requestOptions.append(.schema("https://"))
+            requestOptions.append(.hostname("graph.facebook.com"))
+            requestOptions.append(.method("GET"))
+            requestOptions.append(.path("/v2.3/oauth/access_token?client_id=\(clientId)&redirect_uri=\(callbackUrl)&client_secret=\(clientSecret)&code=\(code)"))
             var headers = [String:String]()
             headers["Accept"] = "application/json"
-            requestOptions.append(.Headers(headers))
+            requestOptions.append(.headers(headers))
             
-            let requestForToken = Http.request(requestOptions) { fbResponse in
-                if let fbResponse = fbResponse where fbResponse.statusCode == HttpStatusCode.OK {
+            let requestForToken = HTTP.request(requestOptions) { fbResponse in
+                if let fbResponse = fbResponse where fbResponse.statusCode == HTTPStatusCode.OK {
                     do {
                         var body = NSMutableData()
                         try fbResponse.readAllData(into: body)
                         var jsonBody = JSON(data: body)
                         if let token = jsonBody["access_token"].string {
                             requestOptions = [ClientRequestOptions]()
-                            requestOptions.append(.Schema("https://"))
-                            requestOptions.append(.Hostname("graph.facebook.com"))
-                            requestOptions.append(.Method("GET"))
-                            requestOptions.append(.Path("/me?access_token=\(token)"))
+                            requestOptions.append(.schema("https://"))
+                            requestOptions.append(.hostname("graph.facebook.com"))
+                            requestOptions.append(.method("GET"))
+                            requestOptions.append(.path("/me?access_token=\(token)"))
                             headers = [String:String]()
                             headers["Accept"] = "application/json"
-                            requestOptions.append(.Headers(headers))
+                            requestOptions.append(.headers(headers))
                             
-                            let requestForProfile = Http.request(requestOptions) { profileResponse in
-                                if let profileResponse = profileResponse where profileResponse.statusCode == HttpStatusCode.OK {
+                            let requestForProfile = HTTP.request(requestOptions) { profileResponse in
+                                if let profileResponse = profileResponse where profileResponse.statusCode == HTTPStatusCode.OK {
                                     do {
                                         body = NSMutableData()
                                         try profileResponse.readAllData(into: body)
