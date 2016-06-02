@@ -35,8 +35,8 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
         return "Facebook"
     }
     
-    public var type : CredentialsPluginType {
-        return .session
+    public var redirecting : Bool {
+        return true
     }
     
     public init (clientId: String, clientSecret : String, callbackUrl : String) {
@@ -53,7 +53,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
     
     
     /// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
-    public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: () -> Void, onPass: () -> Void, inProgress: () -> Void) {
+    public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: (HTTPStatusCode?, [String:String]?) -> Void, onPass: (HTTPStatusCode?, [String:String]?) -> Void, inProgress: () -> Void) {
         if let code = request.queryParams["code"] {
             var requestOptions = [ClientRequestOptions]()
             requestOptions.append(.schema("https://"))
@@ -98,7 +98,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                                     }
                                 }
                                 else {
-                                    onFailure()
+                                    onFailure(nil, nil)
                                 }
                             }
                             requestForProfile.end()
@@ -109,7 +109,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                     }
                 }
                 else {
-                    onFailure()
+                    onFailure(nil, nil)
                 }
             }
             requestForToken.end()
