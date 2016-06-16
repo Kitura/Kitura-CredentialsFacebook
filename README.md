@@ -62,7 +62,7 @@ router.get("/login/facebook/callback",
 
 ## Example of authentication with Facebook OAuth token
 
-This example shows how to use this `CredentialsFacebookToken` plugin to authenticate post requests, it shows both the server side and the client side of the request involved.
+This example shows how to use `CredentialsFacebookToken` plugin to authenticate post requests, it shows both the server side and the client side of the request involved.
 
 ### Server side
 
