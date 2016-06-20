@@ -54,8 +54,8 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
     
     /// https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow
     public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: (HTTPStatusCode?, [String:String]?) -> Void, onPass: (HTTPStatusCode?, [String:String]?) -> Void, inProgress: () -> Void) {
-        if let code = request.queryParams["code"] {
-            var requestOptions = [ClientRequestOptions]()
+        if let code = request.queryParameters["code"] {
+            var requestOptions: [ClientRequest.Options] = []
             requestOptions.append(.schema("https://"))
             requestOptions.append(.hostname("graph.facebook.com"))
             requestOptions.append(.method("GET"))
@@ -71,7 +71,7 @@ public class CredentialsFacebook : CredentialsPluginProtocol {
                         try fbResponse.readAllData(into: body)
                         var jsonBody = JSON(data: body)
                         if let token = jsonBody["access_token"].string {
-                            requestOptions = [ClientRequestOptions]()
+                            requestOptions = []
                             requestOptions.append(.schema("https://"))
                             requestOptions.append(.hostname("graph.facebook.com"))
                             requestOptions.append(.method("GET"))
