@@ -35,27 +35,25 @@ public class CredentialsFacebookToken : CredentialsPluginProtocol {
 
     public init () {}
 
-#if os(OSX)
     public var usersCache : NSCache<NSString, BaseCacheElement>?
-#else
-    public var usersCache : Cache?
-#endif
 
-    public func authenticate (request: RouterRequest, response: RouterResponse, options: [String:OptionValue], onSuccess: (UserProfile) -> Void, onFailure: (HTTPStatusCode?, [String:String]?) -> Void, onPass: (HTTPStatusCode?, [String:String]?) -> Void, inProgress: () -> Void) {
+    public func authenticate (request: RouterRequest, response: RouterResponse,
+                              options: [String:Any], onSuccess: @escaping (UserProfile) -> Void,
+                              onFailure: @escaping (HTTPStatusCode?, [String:String]?) -> Void,
+                              onPass: @escaping (HTTPStatusCode?, [String:String]?) -> Void,
+                              inProgress: @escaping () -> Void) {
         if let type = request.headers["X-token-type"], type == name {
             if let token = request.headers["access_token"] {
-                let cacheElement = usersCache!.object(forKey: token.bridge())
                 #if os(Linux)
-                    if let cached = cacheElement as? BaseCacheElement {
-                        onSuccess(cached.userProfile)
-                        return
-                    }
+                    let key = NSString(string: token)
                 #else
-                    if let cached = cacheElement {
-                        onSuccess(cached.userProfile)
-                        return
-                    }
+                    let key = token as NSString
                 #endif
+                let cacheElement = usersCache!.object(forKey: key)
+                if let cached = cacheElement {
+                    onSuccess(cached.userProfile)
+                    return
+                }
 
                 var requestOptions: [ClientRequest.Options] = []
                 requestOptions.append(.schema("https://"))
@@ -76,7 +74,12 @@ public class CredentialsFacebookToken : CredentialsPluginProtocol {
                                 let name = jsonBody["name"].string {
                                 let userProfile = UserProfile(id: id, displayName: name, provider: self.name)
                                 let newCacheElement = BaseCacheElement(profile: userProfile)
-                                self.usersCache!.setObject(newCacheElement, forKey: token.bridge())
+                                #if os(Linux)
+                                    let key = NSString(string: token)
+                                #else
+                                    let key = token as NSString
+                                #endif
+                                self.usersCache!.setObject(newCacheElement, forKey: key)
                                 onSuccess(userProfile)
                                 return
                             }
