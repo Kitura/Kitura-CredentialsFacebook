@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CredentialsFacebook  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset="utf-8">
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+  </head>
+  <body>
+
+
+    <a title="CredentialsFacebook  Reference"></a>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          CredentialsFacebook Docs
+        </a>
+         (100% documented)
+      </p>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook/">
+            <img class="header-icon" src="img/gh.png"/>
+            View on GitHub
+          </a>
+        </p>
+    
+    </header>
+
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">CredentialsFacebook Reference</a>
+      <img class="carat" src="img/carat.png" />
+      CredentialsFacebook  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CredentialsFacebook.html">CredentialsFacebook</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Classes/CredentialsFacebookToken.html">CredentialsFacebookToken</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content">
+            
+            <a href='#kitura-credentialsfacebook' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h1 id='kitura-credentialsfacebook'>Kitura-CredentialsFacebook</h1>
+
+<p>Plugins for the Credentials framework that authenticate using Facebook</p>
+
+<p><img src="https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat" alt="Mac OS X">
+<img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
+<img src="https://img.shields.io/badge/license-Apache2-blue.svg?style=flat" alt="Apache 2"></p>
+<a href='#summary' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='summary'>Summary</h2>
+
+<p>Plugins for <a href="https://github.com/IBM-Swift/Kitura-Credentials">Kitura-Credentials</a> framework that authenticate using the <a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow">Facebook web login with OAuth</a> and a <a href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook OAuth token</a> that was acquired by a mobile app or other client of the Kitura based backend.</p>
+<a href='#table-of-contents' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='table-of-contents'>Table of Contents</h2>
+
+<ul>
+<li><a href="#swift-version">Swift version</a></li>
+<li><a href="#example-of-facebook-web-login">Example of Facebook web login</a></li>
+<li><a href="#example-of-authentication-with-facebook-oauth-token">Example of authentication with Facebook OAuth token</a></li>
+<li><a href="#license">License</a></li>
+</ul>
+<a href='#swift-version' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='swift-version'>Swift version</h2>
+
+<p>The latest version of Kitura-CredentialsFacebook requires <strong>Swift 3.0</strong>. You can download this version of the Swift binaries by following this <a href="https://swift.org/download/">link</a>. Compatibility with other Swift versions is not guaranteed.</p>
+<a href='#example-of-facebook-web-login' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example-of-facebook-web-login'>Example of Facebook web login</h2>
+
+<p>A complete sample can be found in <a href="https://github.com/IBM-Swift/Kitura-Credentials-Sample">Kitura-Credentials-Sample</a>.
+<br></p>
+
+<p>First create an instance of <code>CredentialsFacebook</code> plugin and register it with <code>Credentials</code> framework:
+&ldquo;`swift
+import Credentials
+import CredentialsFacebook</p>
+
+<p>let credentials = Credentials()
+let fbCredentials = CredentialsFacebook(clientId: fbClientId, clientSecret: fbClientSecret, callbackUrl: serverUrl + <q>/login/facebook/callback</q>)
+credentials.register(fbCredentials)
+&rdquo;`
+<strong>Where:</strong>
+   - <em>fbClientId</em> is the App ID of your app in the Facebook Developer dashboard
+   - <em>fbClientSecret</em> is the App Secret of your app in the Facebook Developer dashboard</p>
+
+<p><strong>Note:</strong> The <em>callbackUrl</em> parameter above is used to tell the Facebook web login page where the user&rsquo;s browser should be redirected when the login is successful. It should be a URL handled by the server you are writing.
+Specify where to redirect non-authenticated requests:
+<code>swift
+credentials.options[&quot;failureRedirect&quot;] = &quot;/login/facebook&quot;
+</code></p>
+
+<p>Connect <code>credentials</code> middleware to requests to <code>/private</code>:</p>
+<pre class="highlight swift"><code><span class="n">router</span><span class="o">.</span><span class="nf">all</span><span class="p">(</span><span class="s">"/private"</span><span class="p">,</span> <span class="nv">middleware</span><span class="p">:</span> <span class="n">credentials</span><span class="p">)</span>
+<span class="n">router</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="s">"/private/data"</span><span class="p">,</span> <span class="nv">handler</span><span class="p">:</span>
+    <span class="p">{</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">next</span> <span class="k">in</span>
+        <span class="o">...</span>  
+        <span class="nf">next</span><span class="p">()</span>
+<span class="p">})</span>
+</code></pre>
+
+<p>And call <code>authenticate</code> to login with Facebook and to handle the redirect (callback) from the Facebook login web page after a successful login:</p>
+<pre class="highlight swift"><code><span class="n">router</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="s">"/login/facebook"</span><span class="p">,</span>
+           <span class="nv">handler</span><span class="p">:</span> <span class="n">credentials</span><span class="o">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">fbCredentials</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+
+<span class="n">router</span><span class="o">.</span><span class="nf">get</span><span class="p">(</span><span class="s">"/login/facebook/callback"</span><span class="p">,</span>
+           <span class="nv">handler</span><span class="p">:</span> <span class="n">credentials</span><span class="o">.</span><span class="nf">authenticate</span><span class="p">(</span><span class="n">fbCredentials</span><span class="o">.</span><span class="n">name</span><span class="p">))</span>
+</code></pre>
+<a href='#example-of-authentication-with-facebook-oauth-token' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h2 id='example-of-authentication-with-facebook-oauth-token'>Example of authentication with Facebook OAuth token</h2>
+
+<p>This example shows how to use <code>CredentialsFacebookToken</code> plugin to authenticate post requests, it shows both the server side and the client side of the request involved.</p>
+<a href='#server-side' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='server-side'>Server side</h3>
+
+<p>First create an instance of <code>Credentials</code> and an instance of <code>CredentialsFacebookToken</code> plugin:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">Credentials</span>
+<span class="kd">import</span> <span class="kt">CredentialsFacebook</span>
+
+<span class="k">let</span> <span class="nv">credentials</span> <span class="o">=</span> <span class="kt">Credentials</span><span class="p">()</span>
+<span class="k">let</span> <span class="nv">fbCredentials</span> <span class="o">=</span> <span class="kt">CredentialsFacebookToken</span><span class="p">()</span>
+</code></pre>
+
+<p>Now register the plugin:
+<code>swift
+credentials.register(fbCredentials)
+</code></p>
+
+<p>Connect <code>credentials</code> middleware to post requests:</p>
+<pre class="highlight swift"><code><span class="n">router</span><span class="o">.</span><span class="nf">post</span><span class="p">(</span><span class="s">"/collection/:new"</span><span class="p">,</span> <span class="nv">middleware</span><span class="p">:</span> <span class="n">credentials</span><span class="p">)</span>
+</code></pre>
+
+<p>If the authentication is successful, <code>request.userProfile</code> will contain user profile information received from Facebook:
+<code>swift
+router.post(&quot;/collection/:new&quot;) {request, response, next in
+  ...
+  let profile = request.userProfile
+  let userId = profile.id
+  let userName = profile.displayName
+  ...
+  next()
+}
+</code></p>
+<a href='#client-side' class='anchor' aria-hidden=true><span class="header-anchor"></span></a><h3 id='client-side'>Client side</h3>
+
+<p>The client needs to put <a href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook access token</a> in request&rsquo;s <code>access_token</code> HTTP header field, and <q>FacebookToken</q> in <code>X-token-type</code> field:
+&ldquo;`swift
+let urlRequest = NSMutableURLRequest(URL: NSURL(string: <q>http://\(serverUrl)/collection/\(name)</q>))
+urlRequest.HTTPMethod = <q>POST</q>
+urlRequest.HTTPBody = &hellip;</p>
+
+<p>urlRequest.addValue(FBSDKAccessToken.currentAccessToken().tokenString, forHTTPHeaderField: <q>access_token</q>)
+urlRequest.addValue(<q>FacebookToken</q>, forHTTPHeaderField: <q>X-token-type</q>)            </p>
+
+<p>Alamofire.request(urlRequest).responseJSON {response in
+  &hellip;
+}</p>
+<pre class="highlight plaintext"><code>## License
+This library is licensed under Apache 2.0. Full license text is available in [LICENSE](LICENSE.txt).
+</code></pre>
+
+          </div>
+        </section>
+
+
+      </article>
+    </div>
+    <section class="footer">
+      <p>&copy; 2016 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2016-09-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.7.2</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+    </section>
+  </body>
+</div>
+</html>
