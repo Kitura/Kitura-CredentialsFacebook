@@ -21,7 +21,13 @@ The latest version of Kitura-CredentialsFacebook requires **Swift 3.0**. You can
 A complete sample can be found in [Kitura-Credentials-Sample](https://github.com/IBM-Swift/Kitura-Credentials-Sample).
 <br>
 
-First create an instance of `CredentialsFacebook` plugin and register it with `Credentials` framework:
+First set up the session:
+```swift
+import KituraSession
+
+router.all(middleware: Session(secret: "Very very secret..."))
+```
+Create an instance of `CredentialsFacebook` plugin and register it with `Credentials` framework:
 ```swift
 import Credentials
 import CredentialsFacebook
