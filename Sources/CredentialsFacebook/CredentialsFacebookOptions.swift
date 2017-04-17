@@ -27,5 +27,6 @@ public struct CredentialsFacebookOptions {
     /// A list of [fields](https://developers.facebook.com/docs/graph-api/reference/user) to ask for in authentication.
     /// The value of fields should be either a String of comma-separated requsted fields, or an array
     /// of String with the requested fields.
+    /// If left blank, authentication only returns an "id" and "name" for the user.
     public static let fields = "fields"
 }
