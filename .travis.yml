@@ -1,4 +1,4 @@
-# Travis CI build file for Kitura-redis.
+# Travis CI build file for Kitura-CredentialsFacebook.
 # Kitura runs on OS X and Linux (Ubuntu v15.10).
 
 # whitelist (branches that should be built)
@@ -17,21 +17,12 @@ matrix:
     - os: linux
       dist: trusty
       sudo: required
-    - os: linux
-      dist: trusty
-      sudo: required
-      env: SWIFT_SNAPSHOT=$SWIFT_4_DEV_SNAPSHOT
-    - os: osx
-      osx_image: xcode8.3
-      sudo: required
     - os: osx
       osx_image: xcode9
       sudo: required
-      env: SWIFT_SNAPSHOT=$SWIFT_4_DEV_SNAPSHOT
 
 before_install:
   - git clone https://github.com/IBM-Swift/Package-Builder.git
-  - test -n "$SWIFT_VERSION" && echo "$SWIFT_VERSION" > .swift-version || echo "SWIFT_VERSION not set, using $(cat .swift-version)"
 
 script:
   - ./Package-Builder/build-package.sh -projectDir $TRAVIS_BUILD_DIR

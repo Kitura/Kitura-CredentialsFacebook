@@ -1,5 +1,4 @@
-Kitura-CredentialsFacebook.xcodeproj/
-Packages
+*.xcodeproj/
 .build
 build
-
+Package.resolved
