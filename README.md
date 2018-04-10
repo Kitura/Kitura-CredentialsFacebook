@@ -1,10 +1,28 @@
-# Kitura-CredentialsFacebook
-Plugins for the Credentials framework that authenticate using Facebook
+<p align="center">
+    <a href="http://kitura.io/">
+        <img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+    </a>
+</p>
 
-[![Build Status - Master](https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook.svg?branch=master)](https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook)
-![Mac OS X](https://img.shields.io/badge/os-Mac%20OS%20X-green.svg?style=flat)
-![Linux](https://img.shields.io/badge/os-linux-green.svg?style=flat)
-![Apache 2](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat)
+
+<p align="center">
+    <a href="http://www.kitura.io/">
+    <img src="https://img.shields.io/badge/docs-kitura.io-1FBCE4.svg" alt="Docs">
+    </a>
+    <a href="https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook">
+    <img src="https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook.svg?branch=master" alt="Build Status - Master">
+    </a>
+    <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
+    <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
+    <img src="https://img.shields.io/badge/license-Apache2-blue.svg?style=flat" alt="Apache 2">
+    <a href="http://swift-at-ibm-slack.mybluemix.net/">
+    <img src="http://swift-at-ibm-slack.mybluemix.net/badge.svg" alt="Slack Status">
+    </a>
+</p>
+
+# Kitura-CredentialsFacebook
+
+Plugins for the Credentials framework that authenticate using Facebook
 
 ## Summary
 Plugins for [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials) framework that authenticate using the [Facebook web login with OAuth](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow) and a [Facebook OAuth token](https://developers.facebook.com/docs/facebook-login/access-tokens) that was acquired by a mobile app or other client of the Kitura based backend.
