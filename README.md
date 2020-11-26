@@ -1,16 +1,16 @@
 <p align="center">
     <a href="http://kitura.io/">
-        <img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+        <img src="https://raw.githubusercontent.com/Kitura/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
     </a>
 </p>
 
 
 <p align="center">
-    <a href="https://ibm-swift.github.io/Kitura-CredentialsFacebook/index.html">
+    <a href="https://kitura.github.io/Kitura-CredentialsFacebook/index.html">
         <img src="https://img.shields.io/badge/apidoc-KituraCredentialsFacebook-1FBCE4.svg?style=flat" alt="APIDoc">
     </a>
-    <a href="https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook">
-    <img src="https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook.svg?branch=master" alt="Build Status - Master">
+    <a href="https://travis-ci.org/Kitura/Kitura-CredentialsFacebook">
+    <img src="https://travis-ci.org/Kitura/Kitura-CredentialsFacebook.svg?branch=master" alt="Build Status - Master">
     </a>
     <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
     <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
@@ -25,7 +25,7 @@
 Plugin for the Credentials framework that authenticates using Facebook.
 
 ## Summary
-Plugin for the [Kitura-Credentials](https://github.com/IBM-Swift/Kitura-Credentials) framework that authenticates using the [Facebook web login with OAuth](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow) and a [Facebook OAuth token](https://developers.facebook.com/docs/facebook-login/access-tokens) that was acquired by a mobile app or other client of the Kitura based backend.
+Plugin for the [Kitura-Credentials](https://github.com/Kitura/Kitura-Credentials) framework that authenticates using the [Facebook web login with OAuth](https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow) and a [Facebook OAuth token](https://developers.facebook.com/docs/facebook-login/access-tokens) that was acquired by a mobile app or other client of the Kitura based backend.
 
 ## Swift version
 The latest version of Kitura-CredentialsFacebook requires **Swift 4.0** or newer. You can download this version of the Swift binaries by following this [link](https://swift.org/download/). Compatibility with other Swift versions is not guaranteed.
@@ -34,11 +34,11 @@ The latest version of Kitura-CredentialsFacebook requires **Swift 4.0** or newer
 
 #### Add dependencies
 
-Add the `Kitura-CredentialsFacebook` and `Credentials` packages to the dependencies within your application’s `Package.swift` file. Substitute `"x.x.x"` with the latest `Kitura-CredentialsFacebook` [release](https://github.com/IBM-Swift/Kitura-CredentialsFacebook/releases) and the latest `Kitura-Credentials` [release](https://github.com/IBM-Swift/Kitura-Credentials/releases).
+Add the `Kitura-CredentialsFacebook` and `Credentials` packages to the dependencies within your application’s `Package.swift` file. Substitute `"x.x.x"` with the latest `Kitura-CredentialsFacebook` [release](https://github.com/Kitura/Kitura-CredentialsFacebook/releases) and the latest `Kitura-Credentials` [release](https://github.com/Kitura/Kitura-Credentials/releases).
 
 ```swift
-.package(url: "https://github.com/IBM-Swift/Kitura-Credentials.git", from: "x.x.x")
-.package(url: "https://github.com/IBM-Swift/Kitura-CredentialsFacebook.git", from: "x.x.x")
+.package(url: "https://github.com/Kitura/Kitura-Credentials.git", from: "x.x.x")
+.package(url: "https://github.com/Kitura/Kitura-CredentialsFacebook.git", from: "x.x.x")
 ```
 
 Add `CredentialsFacebook` and `Credentials` to your target's dependencies:
@@ -54,7 +54,7 @@ import CredentialsFacebook
 ```
 
 ## Example of Facebook web login
-A complete sample can be found in [Kitura-Sample](https://github.com/IBM-Swift/Kitura-Sample).
+A complete sample can be found in [Kitura-Sample](https://github.com/Kitura/Kitura-Sample).
 <br>
 
 First set up the session:
@@ -170,7 +170,7 @@ Alamofire.request(urlRequest).responseJSON {response in
 
 ## API documentation
 
-For more information visit our [API reference](http://ibm-swift.github.io/Kitura-CredentialsFacebook/).
+For more information visit our [API reference](http://kitura.github.io/Kitura-CredentialsFacebook/).
 
 ## Community
 
@@ -178,4 +178,4 @@ We love to talk server-side Swift, and Kitura. Join our [Slack](http://swift-at-
 
 ## License
 
-This library is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/IBM-Swift/Kitura-CredentialsFacebook/blob/master/LICENSE.txt).
+This library is licensed under Apache 2.0. Full license text is available in [LICENSE](https://github.com/Kitura/Kitura-CredentialsFacebook/blob/master/LICENSE.txt).

@@ -33,7 +33,7 @@
       </p>
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook/">
+          <a class="header-link" href="https://github.com/Kitura/Kitura-CredentialsFacebook/">
             <img class="header-icon" src="../img/gh.png"/>
             View on GitHub
           </a>
@@ -145,11 +145,12 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>TypeSafeFacebookToken</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TypeSafeFacebookToken</span><span class="p">:</span> <span class="kt"><a href="../Protocols/TypeSafeFacebook.html">TypeSafeFacebook</a></span></code></pre>
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TypeSafeFacebookToken</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/TypeSafeFacebook.html">TypeSafeFacebook</a></span></code></pre>
 
                 </div>
               </div>
@@ -180,9 +181,11 @@ types (such as profile picture information) provided by the Facebook API.</p>
               <div class="task-name-container">
                 <a name="/Instance%20fields"></a>
                 <a name="//apple_ref/swift/Section/Instance fields" class="dashAnchor"></a>
-                <a href="#/Instance%20fields">
-                  <h3 class="section-name">Instance fields</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Instance%20fields"></a>
+                  <h3 class="section-name"><p>Instance fields</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -206,7 +209,7 @@ wihin the context of the application represented by the token.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">id</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -233,7 +236,7 @@ wihin the context of the application represented by the token.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">name</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -246,9 +249,11 @@ wihin the context of the application represented by the token.</p>
               <div class="task-name-container">
                 <a name="/Static%20fields"></a>
                 <a name="//apple_ref/swift/Section/Static fields" class="dashAnchor"></a>
-                <a href="#/Static%20fields">
-                  <h3 class="section-name">Static fields</h3>
-                </a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Static%20fields"></a>
+                  <h3 class="section-name"><p>Static fields</p>
+</h3>
+                </div>
               </div>
               <ul class="item-container">
                 <li class="item">
@@ -281,7 +286,7 @@ many profiles the token cache can store.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">cacheSize</span><span class="p">:</span> <span class="kt">Int</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">cacheSize</span><span class="p">:</span> <span class="kt">Int</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -316,23 +321,19 @@ many profiles the token cache can store.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">tokenTimeToLive</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">tokenTimeToLive</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:19CredentialsFacebook08TypeSafeB5TokenPAAE12authenticatey6Kitura13RouterRequestC7request_AE0H8ResponseC8responseyxc9onSuccessy0G3Net14HTTPStatusCodeOSg_s10DictionaryVyS2SGSgtc0M7FailureyAP_ATtc0M4SkiptFZ"></a>
+                    <a name="/s:19CredentialsFacebook08TypeSafeB5TokenPAAE12authenticate7request8response9onSuccess0I7Failure0I4Skipy6Kitura13RouterRequestC_AJ0N8ResponseCyxcy0M3Net14HTTPStatusCodeOSg_SDyS2SGSgtcyAR_ATtctFZ"></a>
                     <a name="//apple_ref/swift/Method/authenticate(request:response:onSuccess:onFailure:onSkip:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:19CredentialsFacebook08TypeSafeB5TokenPAAE12authenticatey6Kitura13RouterRequestC7request_AE0H8ResponseC8responseyxc9onSuccessy0G3Net14HTTPStatusCodeOSg_s10DictionaryVyS2SGSgtc0M7FailureyAP_ATtc0M4SkiptFZ">authenticate(request:response:onSuccess:onFailure:onSkip:)</a>
+                    <a class="token" href="#/s:19CredentialsFacebook08TypeSafeB5TokenPAAE12authenticate7request8response9onSuccess0I7Failure0I4Skipy6Kitura13RouterRequestC_AJ0N8ResponseCyxcy0M3Net14HTTPStatusCodeOSg_SDyS2SGSgtcyAR_ATtctFZ">authenticate(request:<wbr>response:<wbr>onSuccess:<wbr>onFailure:<wbr>onSkip:<wbr>)</a>
                     </code>
                       <span class="declaration-note">
                         Extension method
@@ -441,8 +442,8 @@ an appropriate OAuth token supplied via the &lsquo;access_token&rsquo; header.</
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2019-05-01)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">IBM &amp; Kitura Project Contributors</a>. All rights reserved. (Last updated: 2020-11-25)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
