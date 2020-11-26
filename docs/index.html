@@ -32,7 +32,7 @@
       </p>
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook/">
+          <a class="header-link" href="https://github.com/Kitura/Kitura-CredentialsFacebook/">
             <img class="header-icon" src="img/gh.png"/>
             View on GitHub
           </a>
@@ -144,20 +144,20 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             
             <p align="center">
     <a href="http://kitura.io/">
-        <img src="https://raw.githubusercontent.com/IBM-Swift/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
+        <img src="https://raw.githubusercontent.com/Kitura/Kitura/master/Sources/Kitura/resources/kitura-bird.svg?sanitize=true" height="100" alt="Kitura">
     </a>
 </p>
 
 <p align="center">
-    <a href="https://ibm-swift.github.io/Kitura-CredentialsFacebook/index.html">
+    <a href="https://kitura.github.io/Kitura-CredentialsFacebook/index.html">
         <img src="https://img.shields.io/badge/apidoc-KituraCredentialsFacebook-1FBCE4.svg?style=flat" alt="APIDoc">
     </a>
-    <a href="https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook">
-    <img src="https://travis-ci.org/IBM-Swift/Kitura-CredentialsFacebook.svg?branch=master" alt="Build Status - Master">
+    <a href="https://travis-ci.org/Kitura/Kitura-CredentialsFacebook">
+    <img src="https://travis-ci.org/Kitura/Kitura-CredentialsFacebook.svg?branch=master" alt="Build Status - Master">
     </a>
     <img src="https://img.shields.io/badge/os-macOS-green.svg?style=flat" alt="macOS">
     <img src="https://img.shields.io/badge/os-linux-green.svg?style=flat" alt="Linux">
@@ -171,16 +171,16 @@
 <p>Plugin for the Credentials framework that authenticates using Facebook.</p>
 <h2 id='summary' class='heading'>Summary</h2>
 
-<p>Plugin for the <a href="https://github.com/IBM-Swift/Kitura-Credentials">Kitura-Credentials</a> framework that authenticates using the <a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow">Facebook web login with OAuth</a> and a <a href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook OAuth token</a> that was acquired by a mobile app or other client of the Kitura based backend.</p>
+<p>Plugin for the <a href="https://github.com/Kitura/Kitura-Credentials">Kitura-Credentials</a> framework that authenticates using the <a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow">Facebook web login with OAuth</a> and a <a href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook OAuth token</a> that was acquired by a mobile app or other client of the Kitura based backend.</p>
 <h2 id='swift-version' class='heading'>Swift version</h2>
 
 <p>The latest version of Kitura-CredentialsFacebook requires <strong>Swift 4.0</strong> or newer. You can download this version of the Swift binaries by following this <a href="https://swift.org/download/">link</a>. Compatibility with other Swift versions is not guaranteed.</p>
 <h2 id='usage' class='heading'>Usage</h2>
 <h4 id='add-dependencies' class='heading'>Add dependencies</h4>
 
-<p>Add the <code>Kitura-CredentialsFacebook</code> and <code>Credentials</code> packages to the dependencies within your application’s <code>Package.swift</code> file. Substitute <code>&quot;x.x.x&quot;</code> with the latest <code>Kitura-CredentialsFacebook</code> <a href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook/releases">release</a> and the latest <code>Kitura-Credentials</code> <a href="https://github.com/IBM-Swift/Kitura-Credentials/releases">release</a>.</p>
-<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/Kitura-Credentials.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"x.x.x"</span><span class="p">)</span>
-<span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/IBM-Swift/Kitura-CredentialsFacebook.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"x.x.x"</span><span class="p">)</span>
+<p>Add the <code>Kitura-CredentialsFacebook</code> and <code>Credentials</code> packages to the dependencies within your application’s <code>Package.swift</code> file. Substitute <code>&quot;x.x.x&quot;</code> with the latest <code>Kitura-CredentialsFacebook</code> <a href="https://github.com/Kitura/Kitura-CredentialsFacebook/releases">release</a> and the latest <code>Kitura-Credentials</code> <a href="https://github.com/Kitura/Kitura-Credentials/releases">release</a>.</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Kitura/Kitura-Credentials.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"x.x.x"</span><span class="p">)</span>
+<span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Kitura/Kitura-CredentialsFacebook.git"</span><span class="p">,</span> <span class="nv">from</span><span class="p">:</span> <span class="s">"x.x.x"</span><span class="p">)</span>
 </code></pre>
 
 <p>Add <code><a href="Classes/CredentialsFacebook.html">CredentialsFacebook</a></code> and <code>Credentials</code> to your target&rsquo;s dependencies:</p>
@@ -192,7 +192,7 @@
 </code></pre>
 <h2 id='example-of-facebook-web-login' class='heading'>Example of Facebook web login</h2>
 
-<p>A complete sample can be found in <a href="https://github.com/IBM-Swift/Kitura-Sample">Kitura-Sample</a>.
+<p>A complete sample can be found in <a href="https://github.com/Kitura/Kitura-Sample">Kitura-Sample</a>.
 <br></p>
 
 <p>First set up the session:</p>
@@ -281,7 +281,7 @@ Specify where to redirect non-authenticated requests:</p>
 </code></pre>
 <h3 id='client-side' class='heading'>Client side</h3>
 
-<p>The client needs to put <a href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook access token</a> in request&rsquo;s <code>access_token</code> HTTP header field, and <q>FacebookToken</q> in <code>X-token-type</code> field:</p>
+<p>The client needs to put <a href="https://developers.facebook.com/docs/facebook-login/access-tokens">Facebook access token</a> in request&rsquo;s <code>access_token</code> HTTP header field, and &ldquo;FacebookToken&rdquo; in <code>X-token-type</code> field:</p>
 <pre class="highlight swift"><code><span class="k">let</span> <span class="nv">urlRequest</span> <span class="o">=</span> <span class="kt">NSMutableURLRequest</span><span class="p">(</span><span class="kt">URL</span><span class="p">:</span> <span class="kt">NSURL</span><span class="p">(</span><span class="nv">string</span><span class="p">:</span> <span class="s">"http://</span><span class="se">\(</span><span class="n">serverUrl</span><span class="se">)</span><span class="s">/collection/</span><span class="se">\(</span><span class="n">name</span><span class="se">)</span><span class="s">"</span><span class="p">))</span>
 <span class="n">urlRequest</span><span class="o">.</span><span class="kt">HTTPMethod</span> <span class="o">=</span> <span class="s">"POST"</span>
 <span class="n">urlRequest</span><span class="o">.</span><span class="kt">HTTPBody</span> <span class="o">=</span> <span class="o">...</span>
@@ -296,13 +296,13 @@ Specify where to redirect non-authenticated requests:</p>
 </code></pre>
 <h2 id='api-documentation' class='heading'>API documentation</h2>
 
-<p>For more information visit our <a href="http://ibm-swift.github.io/Kitura-CredentialsFacebook/">API reference</a>.</p>
+<p>For more information visit our <a href="http://kitura.github.io/Kitura-CredentialsFacebook/">API reference</a>.</p>
 <h2 id='community' class='heading'>Community</h2>
 
 <p>We love to talk server-side Swift, and Kitura. Join our <a href="http://swift-at-ibm-slack.mybluemix.net/">Slack</a> to meet the team!</p>
 <h2 id='license' class='heading'>License</h2>
 
-<p>This library is licensed under Apache 2.0. Full license text is available in <a href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook/blob/master/LICENSE.txt">LICENSE</a>.</p>
+<p>This library is licensed under Apache 2.0. Full license text is available in <a href="https://github.com/Kitura/Kitura-CredentialsFacebook/blob/master/LICENSE.txt">LICENSE</a>.</p>
 
           </div>
         </section>
@@ -311,8 +311,8 @@ Specify where to redirect non-authenticated requests:</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2019-05-01)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">IBM &amp; Kitura Project Contributors</a>. All rights reserved. (Last updated: 2020-11-25)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>

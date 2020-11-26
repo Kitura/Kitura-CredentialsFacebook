@@ -33,7 +33,7 @@
       </p>
     
         <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/IBM-Swift/Kitura-CredentialsFacebook/">
+          <a class="header-link" href="https://github.com/Kitura/Kitura-CredentialsFacebook/">
             <img class="header-icon" src="../img/gh.png"/>
             View on GitHub
           </a>
@@ -145,11 +145,12 @@
       <article class="main-content">
 
         <section class="section">
-          <div class="section-content">
+          <div class="section-content top-matter">
             <h1>TypeSafeFacebook</h1>
               <div class="declaration">
                 <div class="language">
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TypeSafeFacebook</span><span class="p">:</span> <span class="kt">TypeSafeCredentials</span></code></pre>
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">TypeSafeFacebook</span> <span class="p">:</span> <span class="kt">TypeSafeCredentials</span></code></pre>
 
                 </div>
               </div>
@@ -190,7 +191,7 @@ tokens will be accepted, regardless of which app they are associated with.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">appID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">appID</span><span class="p">:</span> <span class="kt">String</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -200,9 +201,9 @@ tokens will be accepted, regardless of which app they are associated with.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:19CredentialsFacebook08TypeSafeB0P15validFieldNamess3SetVySSGvpZ"></a>
+                    <a name="/s:19CredentialsFacebook08TypeSafeB0P15validFieldNamesShySSGvpZ"></a>
                     <a name="//apple_ref/swift/Variable/validFieldNames" class="dashAnchor"></a>
-                    <a class="token" href="#/s:19CredentialsFacebook08TypeSafeB0P15validFieldNamess3SetVySSGvpZ">validFieldNames</a>
+                    <a class="token" href="#/s:19CredentialsFacebook08TypeSafeB0P15validFieldNamesShySSGvpZ">validFieldNames</a>
                     </code>
                       <span class="declaration-note">
                         Default implementation
@@ -230,17 +231,13 @@ Source: <a href="https://developers.facebook.com/docs/facebook-login/permissions
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">validFieldNames</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">static</span> <span class="k">var</span> <span class="nv">validFieldNames</span><span class="p">:</span> <span class="kt">Set</span><span class="o">&lt;</span><span class="kt">String</span><span class="o">&gt;</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
                     </section>
                   </div>
                 </li>
-              </ul>
-            </div>
-            <div class="task-group">
-              <ul class="item-container">
                 <li class="item">
                   <div>
                     <code>
@@ -264,7 +261,7 @@ Source: <a href="https://developers.facebook.com/docs/facebook-login/permissions
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">provider</span><span class="p">:</span> <span class="kt">String</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="k">var</span> <span class="nv">provider</span><span class="p">:</span> <span class="kt">String</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
 
                         </div>
                       </div>
@@ -279,8 +276,8 @@ Source: <a href="https://developers.facebook.com/docs/facebook-login/permissions
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2019 <a class="link" href="" target="_blank" rel="external">IBM</a>. All rights reserved. (Last updated: 2019-05-01)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.9.1</a>, a <a class="link" href="http://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+      <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external">IBM &amp; Kitura Project Contributors</a>. All rights reserved. (Last updated: 2020-11-25)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.6</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
     </section>
   </body>
 </div>
